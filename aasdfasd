@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMW Animation</title>
+    <style>
+        /* Общие стили */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #87CEEB; /* Голубое небо */
+        }
+
+        /* Дорога */
+        .road {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 200px;
+            background: #555; /* Темно-серая дорога */
+        }
+
+        /* Разметка на дороге */
+        .lane-marking {
+            position: absolute;
+            top: 90px;
+            width: 60px;
+            height: 10px;
+            background: #FFD700; /* Желтые полосы */
+            animation: move-lane 1s linear infinite;
+        }
+
+        @keyframes move-lane {
+            from {
+                left: 100%;
+            }
+            to {
+                left: -60px;
+            }
+        }
+
+        /* Машина */
+        .car {
+            position: absolute;
+            bottom: 50px; /* Расположение машины над дорогой */
+            width: 200px; /* Ширина машины */
+            height: 50px; /* Высота машины */
+            background-color: blue; /* Цвет машины */
+            border-radius: 10px; /* Закругленные углы */
+            animation: drive 5s linear forwards; /* Анимация движения */
+        }
+
+        @keyframes drive {
+            0% {
+                left: -200px; /* Начальная позиция за пределами экрана */
+            }
+            100% {
+                left: calc(100% - 50px); /* Конечная позиция */
+            }
+        }
+
+        /* Крыша машины */
+        .car:before {
+            content: '';
+            position: absolute;
+            top: -20px; /* Положение крыши */
+            left: 20px; /* Положение крыши */
+            width: 160px; /* Ширина крыши */
+            height: 20px; /* Высота крыши */
+            background-color: blue; /* Цвет крыши */
+            border-radius: 10px; /* Закругленные углы крыши */
+        }
+
+        /* Окна машины */
+        .window {
+            position: absolute;
+            top: -15px; /* Положение окна */
+            left: 30px; /* Положение окна */
+            width: 140px; /* Ширина окна */
+            height: 15px; /* Высота окна */
+            background-color: rgba(255, 255, 255, 0.7); /* Полупрозрачный цвет окна */
+            border-radius: 5px; /* Закругленные углы окна */
+        }
+
+        /* Двери */
+        .door {
+            position: absolute;
+            top: 0; /* Положение двери */
+            width: 60px; /* Ширина двери */
+            height: 50px; /* Высота двери */
+            background-color: blue; /* Цвет двери */
+            border: 2px solid #000; /* Черная рамка двери */
+        }
+
+        .door.left {
+            left: 0; /* Положение левой двери */
+        }
+
+        .door.right {
+            right: 0; /* Положение правой двери */
+        }
+
+        /* Фары */
+        .headlight {
+            position: absolute;
+            top: 10px; /* Положение фары */
+            width: 15px; /* Ширина фары */
+            height: 10px; /* Высота фары */
+            background-color: yellow; /* Цвет фары */
+            border-radius: 5px; /* Закругленные углы фары */
+        }
+
+        .headlight.left {
+            left: 10px; /* Положение левой фары */
+        }
+
+        .headlight.right {
+            right: 10px; /* Положение правой фары */
+        }
+
+        /* Колеса */
+        .wheel {
+            position: absolute;
+            bottom: -10px; /* Положение колес */
+            width: 20px; /* Ширина колес */
+            height: 20px; /* Высота колес */
+            background-color: black; /* Цвет колес */
+            border-radius: 50%; /* Круглые колеса */
+        }
+
+        .wheel.left {
+            left: 20px; /* Положение левого колеса */
+        }
+
+        .wheel.right {
+            right: 20px; 
+            
+           }
+
+        /* Деревья */
+        .tree {
+            position: absolute;
+            bottom: 200px;
+            width: 100px;
+            height: 200px;
+            background-color: #228B22; /* Зеленый */
+            border-radius: 50%;
+            animation: move-tree 5s linear infinite;
+        }
+
+        .tree:before {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 35px;
+            width: 30px;
+            height: 100px;
+            background-color: #8B4513; /* Коричневый ствол */
+        }
+
+        @keyframes move-tree {
+            from {
+                left: 100%;
+            }
+            to {
+                left: -100px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Дорога -->
+    <div class="road">
+        <!-- Полосы разметки -->
+        <div class="lane-marking" style="left: 0;"></div>
+        <div class="lane-marking" style="left: 150px;"></div>
+        <div class="lane-marking" style="left: 300px;"></div>
+        <div class="lane-marking" style="left: 450px;"></div>
+        <div class="lane-marking" style="left: 600px;"></div>
+        <div class="lane-marking" style="left: 750px;"></div>
+    </div>
+
+    <!-- Машина -->
+    <div class="car">
+        <div class="window"></div> <!-- Окно машины -->
+        <div class="door left"></div> <!-- Левая дверь -->
+        <div class="door right"></div> <!-- Правая дверь -->
+        <div class="headlight left"></div> <!-- Левая фара -->
+        <div class="headlight right"></div> <!-- Правая фара -->
+        <div class="wheel left"></div> <!-- Левое колесо -->
+        <div class="wheel right"></div> <!-- Правое колесо -->
+    </div>
+
+    <!-- Деревья -->
+    <div class="tree" style="left: 300px;"></div>
+    <div class="tree" style="left: 600px;"></div>
+    <div class="tree" style="left: 900px;"></div>
+
+    <script>
+        // Реализация дополнительной динамики, если требуется
+        // Можно добавить движение дороги или облаков через JS
+    </script>
+
+</body>
+</html>
